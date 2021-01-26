@@ -1,0 +1,18 @@
+pipeline {
+  agent {
+    kubernetes {
+      	cloud 'kubernetes'
+      	label 'default'
+      	defaultContainer 'jnlp'
+      }
+    }
+  stages {
+    stage('Deploy App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "hellodocker.yaml", kubeconfigId: "bdcaff95-dfae-4afd-a2a3-a6656c829ff5")
+        }
+      }
+    }
+  }
+}
