@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   namespace: jenkins-project
-  name: lem-web123
+  name: lem-web2
   labels:
     role: websrv
 spec:
@@ -10,7 +10,12 @@ spec:
     - name: web
       image: nginx
       command:
-        - echo "DONE!"
+        - /bin/sh
+        - '-c'
+        - >-
+          rm ./usr/share/nginx/html/index.html && echo "hello world" >>
+          ./usr/share/nginx/html/index.html && service nginx start && sleep
+          infinity
       ports:
         - name: web
           containerPort: 80
