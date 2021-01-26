@@ -19,10 +19,13 @@ spec:
   stages {
     stage('Deploy App') {
       steps {
+        sh 'whoami'
+        sh 'echo ------------------------------------'
         kubernetesDeploy(
                     kubeconfigId: 'bdcaff95-dfae-4afd-a2a3-a6656c829ff5',
                     configs: 'hellodocker.yaml'
                 )
+        sh 'echo -----------------------------------'
       }
     }
   }
