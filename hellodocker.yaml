@@ -1,15 +1,21 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  name: lem-web123
   labels:
-    run: hello-docker
-  name: hello-docker
-  namespace: foo
+    role: websrv
 spec:
   containers:
-  - image: harik8/hello-docker
-    name: hello-docker
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Never
-status: {}
+    - name: web
+      image: nginx
+      command:
+        - /bin/sh
+        - '-c'
+        - >-
+          rm ./usr/share/nginx/html/index.html && echo "hello world" >>
+          ./usr/share/nginx/html/index.html && service nginx start && sleep
+          infinity
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
