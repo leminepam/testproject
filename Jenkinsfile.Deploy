@@ -3,18 +3,8 @@ pipeline {
     kubernetes {
       	cloud 'kubernetes'
       	defaultContainer 'jnlp'
-      
-    
-    def imageName = "leminepam/dockerhub:first";
-    def registryUrl = "https://registry.hub.docker.com";
-    def registryCredentialsId = "leminepam";
-    
-    docker.withRegistry(registryUrl, registryCredentialsId) {
-        def customImage;
-        stage('Build App') {
-            customImage = docker.build("$imageName", "java/DemoSpringBootApp/");
-        }
-        }
+      }
+    }
     }
   
     stage('Deploy App') {
