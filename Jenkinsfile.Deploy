@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
+    docker.withRegistry("https://registry.hub.docker.com", "leminepam") {
 
         def customImage = docker.build("leminepam/dockerhub:second")
         customImage.push()
