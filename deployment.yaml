@@ -1,27 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: myapp-deployment
   namespace: jenkins-project
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: myapp
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginx
+        app: myapp
     spec:
       containers:
-      - name: nginx
+      - name: myfirstapp
         command:
-            - /bin/sh
-            - '-c'
-            - >-
-              rm ./usr/share/nginx/html/index.html && echo "hello world" >>
-              ./usr/share/nginx/html/index.html && service nginx start && sleep
-              infinity
-        image: nginx
+            - /bin/sh echo "hello"
+        image: leminepam/dockerhub:first
         ports:
         - containerPort: 80
