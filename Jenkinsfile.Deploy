@@ -8,8 +8,7 @@ agent {
     stages {
       stage('Build') {
         steps {
-            def dockerfile = 'Dockerfile'
-            def customImage = docker.build("leminepam/dockerhub:first", "-f ${dockerfile} ./dockerfiles") 
+            sh 'sleep 3600'
             }
           }  
 }
