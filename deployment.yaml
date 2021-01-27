@@ -15,8 +15,6 @@ spec:
     spec:
       containers:
       - name: myfirstapp
-        command:
-            - /bin/sh echo "hello"
         image: leminepam/dockerhub:first
         ports:
         - containerPort: 80
