@@ -1,0 +1,7 @@
+node {
+    checkout scm
+    def customImage = docker.build("leminepam/dockerhub:second")
+    customImage.push()
+
+    customImage.push('second')
+}
