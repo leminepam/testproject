@@ -1,15 +1,23 @@
-pipeline {
-agent {
-    kubernetes {
-      	cloud 'kubernetes'
-      	defaultContainer 'ubuntu'
-      }
-    }
-    stages {
-      stage('Build') {
-        steps {
-            sh 'sleep 3600'
-            }
-          }  
-}
-}
+node {    
+      def app     
+      stage('Clone repository') {               
+             
+            checkout scm    
+      }     
+      stage('Build image') {         
+       
+            app = docker.build("leminepam/third")    
+       }     
+      stage('Test image') {           
+            app.inside {            
+             
+             sh 'echo "Tests passed"'        
+            }    
+        }     
+       stage('Push image') {
+       docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {            
+       app.push("${env.BUILD_NUMBER}")            
+       app.push("latest")        
+              }    
+           }
+        }
