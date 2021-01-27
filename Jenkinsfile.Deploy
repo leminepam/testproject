@@ -9,26 +9,24 @@ agent {
     stages {
       stage('Build') {
         steps {
-          sh 'echo BUILD STEP '
+          sh 'echo START BUILD STEP '
         }
-//        def imageName = "leminepam/dockerhub:first";
-//        def registryUrl = "https://registry.hub.docker.com";
-//        def registryCredentialsId = "leminepam";
+        def imageName = "leminepam/dockerhub:first";
+        def registryUrl = "https://registry.hub.docker.com";
+        def registryCredentialsId = "leminepam";
     
-//        docker.withRegistry(registryUrl, registryCredentialsId) {
-//            def customImage;
-//                customImage = docker.build("$imageName", "/");
+        docker.withRegistry(registryUrl, registryCredentialsId) {
+            def customImage;
+                customImage = docker.build("$imageName", ".");
       }
     
       stage('Deploy App') {
         steps {
-          sh 'echo ------------------'
+          sh 'echo START DEPLOY TO K8S'
           kubernetesDeploy(
                     kubeconfigId: '3079435b-9c55-48c9-bc93-44690128d102',
                     configs: 'deployment.yaml'
                 )
-          sh 'echo ------------------'
-          sh 'sleep 3600'
         }
       }
       }
