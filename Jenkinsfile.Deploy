@@ -1,4 +1,10 @@
-node {
+pipeline {
+agent {
+    kubernetes {
+      	cloud 'kubernetes'
+      	defaultContainer 'jnlp'
+      }
+    }
     checkout scm
     def dockerfile = 'Dockerfile'
     def customImage = docker.build("leminepam/dockerhub:first", "-f ${dockerfile} ./dockerfiles") 
