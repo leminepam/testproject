@@ -9,7 +9,7 @@ pipeline {
     def registryUrl = "https://registry.hub.docker.com";
     def registryCredentialsId = "leminepam";
     
-  docker.withRegistry(registryUrl, registryCredentialsId) {
+    docker.withRegistry(registryUrl, registryCredentialsId) {
         def customImage;
         stage('Build App') {
             customImage = docker.build("$imageName", "java/DemoSpringBootApp/");
