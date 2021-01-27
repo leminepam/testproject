@@ -10,7 +10,6 @@ agent {
       stage('Build') {
         steps {
           sh 'echo START BUILD STEP '
-        }
         def imageName = "leminepam/dockerhub:first";
         def registryUrl = "https://registry.hub.docker.com";
         def registryCredentialsId = "leminepam";
@@ -18,6 +17,7 @@ agent {
         docker.withRegistry(registryUrl, registryCredentialsId) {
             def customImage;
                 customImage = docker.build("$imageName", ".");
+        }
       }
     
       stage('Deploy App') {
