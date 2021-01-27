@@ -5,7 +5,6 @@ pipeline {
       	defaultContainer 'jnlp'
       }
     }
-    }
   
     stage('Deploy App') {
       steps {
