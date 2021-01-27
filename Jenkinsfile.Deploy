@@ -5,7 +5,8 @@ agent {
       	defaultContainer 'jnlp'
       }
     }
-      
+    
+    stages {
     stage('Deploy App') {
       steps {
         sh 'echo ------------------'
@@ -16,6 +17,7 @@ agent {
         sh 'echo ------------------'
         sh 'sleep 3600'
       }
+    }
     }
 }
 
