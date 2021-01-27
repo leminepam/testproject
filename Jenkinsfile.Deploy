@@ -4,7 +4,7 @@ pipeline {
       	cloud 'kubernetes'
       	defaultContainer 'jnlp'
       }
-    }
+    
   
     stage('Deploy App') {
       steps {
@@ -17,4 +17,5 @@ pipeline {
         sh 'sleep 3600'
       }
     }
+  }
   }
