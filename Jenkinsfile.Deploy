@@ -5,7 +5,11 @@ agent {
       	defaultContainer 'jnlp'
       }
     }
-    checkout scm
-    def dockerfile = 'Dockerfile'
-    def customImage = docker.build("leminepam/dockerhub:first", "-f ${dockerfile} ./dockerfiles") 
+    stages {
+      stage('Build') {
+        steps {
+            def dockerfile = 'Dockerfile'
+            def customImage = docker.build("leminepam/dockerhub:first", "-f ${dockerfile} ./dockerfiles") 
+            }
+          }  
 }
