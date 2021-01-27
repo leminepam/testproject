@@ -5,7 +5,16 @@ pipeline {
       	defaultContainer 'jnlp'
       }
     }
-  stages {
+    def imageName = "leminepam/dockerhub:first";
+    def registryUrl = "https://registry.hub.docker.com";
+    def registryCredentialsId = "leminepam";
+    
+  docker.withRegistry(registryUrl, registryCredentialsId) {
+        def customImage;
+        stage('Build App') {
+            customImage = docker.build("$imageName", "java/DemoSpringBootApp/");
+        }
+  
     stage('Deploy App') {
       steps {
         sh 'echo ------------------'
@@ -14,6 +23,7 @@ pipeline {
                     configs: 'deployment.yaml'
                 )
         sh 'echo ------------------'
+        sh 'sleep 3600'
       }
     }
   }
