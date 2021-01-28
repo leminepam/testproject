@@ -1,20 +1,69 @@
-podTemplate(label: 'mypod', containers: [
-    containerTemplate(name: 'docker', image: 'docker:dind', ttyEnabled: true, alwaysPullImage: true, privileged: true,
-      command: 'dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay')
-  ],
-  volumes: [emptyDirVolume(memory: false, mountPath: '/var/lib/docker')]) {
+// Uses Declarative syntax to run commands inside a container.
+pipeline {
+    agent {
+        kubernetes {
+            yaml '''
+apiVersion: "v1"
+kind: "Pod"
+spec:
+  containers:
+  - command:
+    - "dockerd"
+    - "--host=unix:///var/run/docker.sock"
+    - "--host=tcp://0.0.0.0:2375"
+    - "--storage-driver=overlay"
+    image: "docker:dind"
+    imagePullPolicy: "Always"
+    name: "docker"
+    securityContext:
+      privileged: true
+    tty: true
+    volumeMounts:
+    - mountPath: "/var/lib/docker"
+      name: "volume-0"
+      readOnly: false
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "jenkins-1611061541-agent:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "mypod-h8z2k-277z0"
+    - name: "JENKINS_NAME"
+      value: "mypod-h8z2k-277z0"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://jenkins-1611061541:8080/"
+    image: "jenkins/inbound-agent:4.3-4"
+    name: "jnlp"
+    volumeMounts:
+    - mountPath: "/var/lib/docker"
+      name: "volume-0"
+      readOnly: false
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  volumes:
+  - emptyDir:
+      medium: ""
+    name: "volume-0"
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"            
+'''
 
-    node ('mypod') {
-        stage 'Run a docker thing'
-        container('docker') {
-            stage 'Docker thing1'
-            sh 'ls -la'
-            sh 'docker --help'
-            sh 'sleep 3600'
-            // sh 'docker login -u leminepam -p Megapups1'
-            // sh 'docker build -t leminepam/dockerhub:pipeline .'
-            // sh 'docker push -t leminepam/dockerhub:pipeline'
+            defaultContainer 'shell'
         }
-
     }
-  }
+    stages {
+        stage('Main') {
+            steps {
+                sh 'hostname'
+            }
+        }
+    }
+}
