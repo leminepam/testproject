@@ -7,7 +7,7 @@ kind: Pod
 spec:
   containers:
   - name: shell
-    image: leminepam/dockerhub:docker
+    image: ubuntu
     command:
     - sleep
     args:
