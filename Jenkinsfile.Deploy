@@ -8,10 +8,12 @@ podTemplate(label: 'mypod', containers: [
         stage 'Run a docker thing'
         container('docker') {
             stage 'Docker thing1'
-            sh 'ls'
-            sh 'docker login -u leminepam -p Megapups1'
-            sh 'docker build -t leminepam/dockerhub:pipeline .'
-            sh 'docker push -t leminepam/dockerhub:pipeline'
+            sh 'ls -la'
+            sh 'docker --help'
+            sh 'sleep 3600'
+            // sh 'docker login -u leminepam -p Megapups1'
+            // sh 'docker build -t leminepam/dockerhub:pipeline .'
+            // sh 'docker push -t leminepam/dockerhub:pipeline'
         }
 
     }
