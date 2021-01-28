@@ -24,24 +24,14 @@ spec:
         }
     }
     stages {
-        stage('Build') {
-            steps {
-                sh 'echo BUILD'
-                script {
-                    def app = docker.build("leminepam/dockerhub:test")
-                    }
-            }
-        }
         stage('Deploy') {
             steps {
-//                docker.withRegistry('https://registry.hub.docker.com', ${leminepam}) {
-//                def customImage = docker.build("leminepam/dockerhub:test");
-//                customImage.push();
-//               }
                 sh 'echo hello'
-         //       sh 'docker build -t leminepam/dockerhub:test .'
-         //       def customImage = docker.build("leminepam/dockerhub:test")
-         //       sh 'docker push leminepam/dockerhub:test'
+                script {
+                        docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
+                        def customImage = docker.build("leminepam/dockerhub:test");
+                        customImage.push();
+                    }
                 sh 'echo FINISHED'
                 }
         }
