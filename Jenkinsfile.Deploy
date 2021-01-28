@@ -24,10 +24,11 @@ spec:
         }
     }
     stages {
+        def app
         stage('Build') {
             steps {
                 sh 'echo BUILD'
-                def app = docker.build("leminepam/dockerhub:test")
+                app = docker.build("leminepam/dockerhub:test")
             }
         }
         stage('Deploy') {
