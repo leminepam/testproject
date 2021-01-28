@@ -27,6 +27,10 @@ spec:
         stage('Main') {
             steps {
                 sh 'echo hello'
+                sh 'docker build -t leminepam/dockerhub:test .'
+                sh 'docker login -u leminepam -p Megapups1'
+                sh 'docker push -t leminepam/dockerhub:test'
+                sh 'echo FINISHED'
                 }
         }
     }
