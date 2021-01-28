@@ -21,16 +21,20 @@ spec:
 '''
 
             defaultContainer 'newshell'
+            docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
+                    def customImage = docker.build("leminepam/dockerhub:test")
+                    customImage.push()
+                    }
         }
     }
     stages {
         stage('Build deploy') {
             steps {
                 sh 'echo hello'
-                docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                    def customImage = docker.build("leminepam/dockerhub:test")
-                    customImage.push()
-                    }
+//                docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
+  //                  def customImage = docker.build("leminepam/dockerhub:test")
+    //                customImage.push()
+      //              }
          //       sh 'docker build -t leminepam/dockerhub:test .'
          //       def customImage = docker.build("leminepam/dockerhub:test")
          //       sh 'docker push leminepam/dockerhub:test'
