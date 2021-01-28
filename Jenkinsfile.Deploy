@@ -27,7 +27,7 @@ spec:
             steps {
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                        def customImage = docker.build("leminepam/dockerhub:test");
+                        def customImage = docker.build("leminepam/dockerhub:test", "/java/DemoSpringBootApp/");
                         customImage.push();
                         }
                  }
