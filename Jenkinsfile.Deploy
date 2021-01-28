@@ -29,7 +29,8 @@ spec:
                 sh 'echo hello'
                 sh 'docker build -t leminepam/dockerhub:test .'
                 sh 'docker login -u leminepam -p Megapups1'
-                sh 'docker push -t leminepam/dockerhub:test'
+                sh 'sleep 3600'
+                sh 'docker push leminepam/dockerhub:test'
                 sh 'echo FINISHED'
                 }
         }
