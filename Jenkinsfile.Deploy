@@ -25,10 +25,12 @@ spec:
     }
     stages {
         stage('New stg'){
+            steps {
             docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
                 def customImage = docker.build("leminepam/dockerhub:test");
                 customImage.push();
                }
+            }
         }
         stage('Build deploy') {
             steps {
