@@ -1,4 +1,3 @@
-// Uses Declarative syntax to run commands inside a container.
 pipeline {
     agent {
         kubernetes {
@@ -20,21 +19,28 @@ spec:
       path: /var/run/docker.sock
 '''
 
-            defaultContainer 'dockerdind'
-        }
+           defaultContainer 'dockerdind'
+          }
     }
     stages {
+        stage('Build') {
+            steps {
+                script {
+                    def customImage = docker.build("leminepam/dockerhub:test");
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 sh 'echo hello'
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                        def customImage = docker.build("leminepam/dockerhub:test");
+                        // def customImage = docker.build("leminepam/dockerhub:test");
                         customImage.push();
                         }
-                    }
+                 }
                 sh 'echo FINISHED'
-                }
-        }
+             }
+         }
     }
 }
