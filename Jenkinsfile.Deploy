@@ -20,7 +20,6 @@ spec:
         stage('Main') {
             steps {
                 sh 'whoami'     
-                sh 'docker login -u leminepam -p Megapups1'
                 sh 'ls'
                 sh 'sleep 3600'
             }
