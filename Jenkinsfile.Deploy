@@ -3,15 +3,16 @@ pipeline {
     agent {
         kubernetes {
             yaml '''
-apiVersion: "v1"
-kind: "Pod"
+apiVersion: v1
+kind: Pod
 spec:
   containers:
-    image: "docker:dind"
-    name: "docker"
-    securityContext:
-      privileged: true
-    tty: true
+  - name: docker
+    image: docker:dind
+    command:
+    - sleep
+    args:
+    - infinity
 '''
 
             defaultContainer 'shell'
