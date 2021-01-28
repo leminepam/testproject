@@ -7,7 +7,7 @@ kind: Pod
 spec:
   containers:
   - name: shell
-    image: leminepam/dockerhub:first
+    image: leminepam/dockerhub:docker
     command:
     - sleep
     args:
@@ -19,7 +19,9 @@ spec:
     stages {
         stage('Main') {
             steps {
-                sh 'whoami'             
+                sh 'whoami'     
+                sh 'docker login -u leminepam -p Megapups1'
+                sh 'ls'
                 sh 'sleep 3600'
             }
         }
