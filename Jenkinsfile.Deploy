@@ -23,10 +23,13 @@ spec:
           }
     }
     stages {
+    script {
+        def customImage;
+    }
         stage('Build') {
             steps {
                 script {
-                    def customImage = docker.build("leminepam/dockerhub:test");
+                    customImage = docker.build("leminepam/dockerhub:test");
                 }
             }
         }
