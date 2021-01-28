@@ -17,4 +17,4 @@ spec:
       - name: myfirstapp
         image: leminepam/dockerhub:test
         ports:
-        - containerPort: 80
+        - containerPort: 8080
