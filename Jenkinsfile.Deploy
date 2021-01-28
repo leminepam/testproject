@@ -27,7 +27,6 @@ spec:
         stage('Main') {
             steps {
                 sh 'echo hello'
-                sh 'sleep 3600'
                 }
         }
     }
