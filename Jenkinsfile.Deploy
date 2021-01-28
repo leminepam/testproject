@@ -13,6 +13,10 @@ spec:
     - "--host=tcp://0.0.0.0:2375"
     - "--storage-driver=overlay"
     image: "docker:dind"
+    command:
+    - sleep
+    args:
+    - infinity
     name: "docker"
     securityContext:
       privileged: true
