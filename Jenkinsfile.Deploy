@@ -18,8 +18,8 @@ spec:
     - sleep
     args:
     - infinity
-    volumeMounts:
-    - mountPath: "/var/lib/docker"
+  volumeMounts:
+  - mountPath: "/var/lib/docker"
 '''
 
             defaultContainer 'newshell'
