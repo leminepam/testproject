@@ -15,7 +15,7 @@ spec:
     - infinity
 '''
 
-            defaultContainer 'shell'
+            defaultContainer 'newshell'
         }
     }
     stages {
