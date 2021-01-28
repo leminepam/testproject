@@ -7,37 +7,23 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    jenkins/kube-default: true
-    app: jenkins
-    component: agent
+    some-label: dind-agent
 spec:
   containers:
-    - name: newshell2
-      image: <jnlp-image-here>
-      resources:
-        limits:
-          cpu: 1
-          memory: 2Gi
-        requests:
-          cpu: 1
-          memory: 2Gi
-      imagePullPolicy: Always
-      env:
-      - name: POD_IP
-        valueFrom:
-          fieldRef:
-            fieldPath: status.podIP
-      - name: DOCKER_HOST
-        value: tcp://localhost:2375
-    - name: newshell
-      image: docker:18.05-dind
-      securityContext:
-        privileged: true
-      volumeMounts:
-        - name: dind-storage
-          mountPath: /var/lib/docker
+  - name: shell
+    image: docker:19.03.11-dind
+    command:
+    - sleep
+    args:
+    - infinity
+    tty: true
+    securityContext:
+      privileged: true
+    volumeMounts:
+      - name: docker-graph-storage
+        mountPath: /var/lib/docker
   volumes:
-    - name: dind-storage
+    - name: docker-graph-storage
       emptyDir: {}
 '''
 
