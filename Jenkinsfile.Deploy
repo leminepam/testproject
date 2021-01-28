@@ -23,27 +23,23 @@ spec:
           }
     }
     stages {
-    script {
-        def customImage;
-    }
-        stage('Build') {
+        stage('Build&Push IMG') {
             steps {
-                script {
-                    customImage = docker.build("leminepam/dockerhub:test");
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo hello'
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                        // def customImage = docker.build("leminepam/dockerhub:test");
+                        def customImage = docker.build("leminepam/dockerhub:test");
                         customImage.push();
                         }
                  }
-                sh 'echo FINISHED'
              }
+         }
+         stage('Deploy IMG to k8s') {
+            steps {
+                kubernetesDeploy(
+                    kubeconfigId: '3079435b-9c55-48c9-bc93-44690128d102',
+                    configs: 'deployment.yaml'
+                )
+            }
          }
     }
 }
