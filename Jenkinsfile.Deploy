@@ -23,16 +23,7 @@ spec:
       readOnly: false
     - mountPath: "/home/jenkins/agent"
       name: "workspace-volume"
-      readOnly: false
-    image: "jenkins/inbound-agent:4.3-4"
-    name: "jnlp"
-    volumeMounts:
-    - mountPath: "/var/lib/docker"
-      name: "volume-0"
-      readOnly: false
-    - mountPath: "/home/jenkins/agent"
-      name: "workspace-volume"
-      readOnly: false            
+      readOnly: false          
 '''
 
             defaultContainer 'shell'
