@@ -13,7 +13,6 @@ spec:
     - "--host=tcp://0.0.0.0:2375"
     - "--storage-driver=overlay"
     image: "docker:dind"
-    imagePullPolicy: "Always"
     name: "docker"
     securityContext:
       privileged: true
@@ -25,19 +24,6 @@ spec:
     - mountPath: "/home/jenkins/agent"
       name: "workspace-volume"
       readOnly: false
-  - env:
-    - name: "JENKINS_SECRET"
-      value: "********"
-    - name: "JENKINS_TUNNEL"
-      value: "jenkins-1611061541-agent:50000"
-    - name: "JENKINS_AGENT_NAME"
-      value: "mypod-h8z2k-277z0"
-    - name: "JENKINS_NAME"
-      value: "mypod-h8z2k-277z0"
-    - name: "JENKINS_AGENT_WORKDIR"
-      value: "/home/jenkins/agent"
-    - name: "JENKINS_URL"
-      value: "http://jenkins-1611061541:8080/"
     image: "jenkins/inbound-agent:4.3-4"
     name: "jnlp"
     volumeMounts:
@@ -46,14 +32,7 @@ spec:
       readOnly: false
     - mountPath: "/home/jenkins/agent"
       name: "workspace-volume"
-      readOnly: false
-  volumes:
-  - emptyDir:
-      medium: ""
-    name: "volume-0"
-  - emptyDir:
-      medium: ""
-    name: "workspace-volume"            
+      readOnly: false            
 '''
 
             defaultContainer 'shell'
