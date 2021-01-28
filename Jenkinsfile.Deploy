@@ -31,6 +31,7 @@ spec:
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
                         def customImage = docker.build("leminepam/dockerhub:test");
                         customImage.push();
+                        }
                     }
                 sh 'echo FINISHED'
                 }
