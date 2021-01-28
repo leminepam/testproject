@@ -16,14 +16,7 @@ spec:
     name: "docker"
     securityContext:
       privileged: true
-    tty: true
-    volumeMounts:
-    - mountPath: "/var/lib/docker"
-      name: "volume-0"
-      readOnly: false
-    - mountPath: "/home/jenkins/agent"
-      name: "workspace-volume"
-      readOnly: false          
+    tty: true      
 '''
 
             defaultContainer 'shell'
