@@ -7,7 +7,7 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: shell
+  - name: newshell
     image: docker:dind
     command:
     - sleep
