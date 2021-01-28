@@ -5,26 +5,19 @@ pipeline {
             yaml '''
 apiVersion: v1
 kind: Pod
-metadata:
-  labels:
-    some-label: dind-agent
 spec:
   containers:
-  - name: shell
-    image: docker:19.03.11-dind
-    command:
-    - sleep
-    args:
-    - infinity
+  - name: newshell
+    image: docker:1.11
+    command: ['cat']
     tty: true
-    securityContext:
-      privileged: true
     volumeMounts:
-      - name: docker-graph-storage
-        mountPath: /var/lib/docker
+    - name: dockersock
+      mountPath: /var/run/docker.sock
   volumes:
-    - name: docker-graph-storage
-      emptyDir: {}
+  - name: dockersock
+    hostPath:
+      path: /var/run/docker.sock
 '''
 
             defaultContainer 'newshell'
