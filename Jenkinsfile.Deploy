@@ -7,7 +7,7 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: newshell
+  - name: dockerdind
     image: docker:dind
     command: ['cat']
     tty: true
@@ -20,25 +20,17 @@ spec:
       path: /var/run/docker.sock
 '''
 
-            defaultContainer 'newshell'
+            defaultContainer 'dockerdind'
         }
     }
     stages {
-        stage('New stg'){
+        stage('Build deploy') {
             steps {
-            docker.withRegistry('https://registry.hub.docker.com', ${leminepam}) {
+                docker.withRegistry('https://registry.hub.docker.com', ${leminepam}) {
                 def customImage = docker.build("leminepam/dockerhub:test");
                 customImage.push();
                }
-            }
-        }
-        stage('Build deploy') {
-            steps {
                 sh 'echo hello'
-//                docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-  //                  def customImage = docker.build("leminepam/dockerhub:test")
-    //                customImage.push()
-      //              }
          //       sh 'docker build -t leminepam/dockerhub:test .'
          //       def customImage = docker.build("leminepam/dockerhub:test")
          //       sh 'docker push leminepam/dockerhub:test'
