@@ -12,7 +12,7 @@ metadata:
     component: agent
 spec:
   containers:
-    - name: newshell
+    - name: newshell2
       image: <jnlp-image-here>
       resources:
         limits:
@@ -29,7 +29,7 @@ spec:
             fieldPath: status.podIP
       - name: DOCKER_HOST
         value: tcp://localhost:2375
-    - name: dind
+    - name: newshell
       image: docker:18.05-dind
       securityContext:
         privileged: true
