@@ -8,7 +8,7 @@ kind: Pod
 spec:
   containers:
   - name: newshell
-    image: docker:1.11
+    image: docker:dind
     command: ['cat']
     tty: true
     volumeMounts:
