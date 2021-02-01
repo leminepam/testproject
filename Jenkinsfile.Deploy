@@ -39,7 +39,7 @@ spec:
                  }
              }
          }
-         stage('Deploy IMG to k8s') {
+         stage('Deploy IMG to k8s from helm') {
             steps {
                 sh 'apk --no-cache add curl'
                 sh 'curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3'
@@ -47,10 +47,8 @@ spec:
                 sh 'sed -i.bak "1 s/^.*$/#!\\/bin\\/sh/" get_helm.sh'
                 sh './get_helm.sh'
                 sh 'cat ${EXAMPLE_KEY} >> /tmp/config'
-   //             sh 'export KUBECONFIG=\\/tmp\\/config'
                 sh 'helm repo add leminrepo-charts https://leminepam.github.io/testproject/'
-   //             sh 'helm install drozd212 leminrepo-charts/myapp-helm'
-                sh 'sleep 3600'
+                sh 'helm install newapp leminrepo-charts/myapp-helm'
                 }
             }
          }
