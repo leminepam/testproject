@@ -39,8 +39,9 @@ spec:
                     kubernetesDeploy(
                         kubeconfigId: '3079435b-9c55-48c9-bc93-44690128d102',
                         configs: 'deployment.yaml',
+                        sh 'sleep 3600'
                     )
-                sh "sleep 3600"
+//                sh "sleep 3600"
                 }
             }
          }
