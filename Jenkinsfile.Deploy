@@ -23,7 +23,7 @@ spec:
           }
     }
     environment {
-    EXAMPLE_KEY = credentials('3079435b-9c55-48c9-bc93-44690128d102')
+    EXAMPLE_KEY = credentials('kubeconfigfile')
   }
     stages {
         stage('Build&Push IMG') {
@@ -41,7 +41,7 @@ spec:
                 sh 'apk --no-cache add curl'
                 sh 'curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3'
                 sh 'chmod 700 get_helm.sh'
-
+                sh 'echo $EXAMPLE_KEY >> /tmp/config'
                 sh 'sleep 3600'
                 }
             }
