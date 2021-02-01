@@ -35,13 +35,10 @@ spec:
          }
          stage('Deploy IMG to k8s') {
             steps {
-                script {
-                    kubernetesDeploy(
-                        kubeconfigId: '3079435b-9c55-48c9-bc93-44690128d102',
-                        configs: 'deployment.yaml'
-                    ){
-                    sh "sleep 3600"
-                    }
+                sh 'apk --no-cache add curl'
+                sh 'curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+                sh 'chmod 700 get_helm.sh'
+                sh 'sleep 3600'
                 }
             }
          }
