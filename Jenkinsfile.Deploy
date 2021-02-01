@@ -9,8 +9,8 @@ spec:
   - name: dockerdind
     image: docker:dind
     env:
-        - name: KUBECONFIG
-            value: "/tmp/config"
+    - name: KUBECONFIG
+      value: "/tmp/config"
     command: ['cat']
     tty: true
     volumeMounts:
