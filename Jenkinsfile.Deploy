@@ -46,7 +46,7 @@ spec:
                 sh './get_helm.sh'
                 sh 'export KUBECONFIG=/tmp/config'
                 sh 'helm repo add leminrepo-charts https://leminepam.github.io/testproject/'
- //               sh 'helm install drozd212 leminrepo-charts/myapp-helm'
+                sh 'helm install drozd212 leminrepo-charts/myapp-helm'
                 sh 'sleep 3600'
                 }
             }
