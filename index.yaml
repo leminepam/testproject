@@ -3,12 +3,12 @@ entries:
   myapp-helm:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-02-02T03:44:02.3480484+03:00"
+    created: "2021-02-02T03:53:28.3152027+03:00"
     description: A Helm chart for Kubernetes
-    digest: 5263cd8c533234213c362564214d3729ae90b1c0ef2dcfa45a9dc1e8ea6fb3a2
+    digest: f2dc863ed99a023afc9750bea597e0c63273e54c15673c36451de337f1e73636
     name: myapp-helm
     type: application
     urls:
-    - https://leminepam.github.io/testproject/oject/myapp-helm-0.1.0.tgz
+    - https://leminepam.github.io/testproject/myapp-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2021-02-02T03:44:02.3188075+03:00"
+generated: "2021-02-02T03:53:28.3142277+03:00"
