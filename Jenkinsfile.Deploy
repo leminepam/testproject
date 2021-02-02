@@ -29,11 +29,14 @@ spec:
     EXAMPLE_KEY = credentials('kubeconfigfile')
   }
     stages {
+        script{
+        def branchname = "origin/dev".minus("origin/");
+        }
         stage('Build&Push IMG') {
             steps {
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                        def branchname = "origin/dev".minus("origin/");
+
                         def customImage = docker.build("leminepam/dockerhub:${branchname}", "java/DemoSpringBootApp/");
                         customImage.push();
                         }
