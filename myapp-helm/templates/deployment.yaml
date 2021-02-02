@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
-  namespace: {{ .Values.namespace }}
+  name: myapp-deployment
+  namespace: jenkins-project
 spec:
   selector:
     matchLabels:
@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: myfirstapp
-        image: {{ .Values.image }}
+        image: leminepam/dockerhub:test
         ports:
         - containerPort: 8080

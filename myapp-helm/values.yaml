@@ -1,1 +1,4 @@
 user: "Username"
+namespace: "jenkins-project"
+name: "myapp-deployment"
+image: "leminepam/dockerhub:test"
