@@ -28,8 +28,8 @@ spec:
     environment {
     EXAMPLE_KEY = credentials('kubeconfigfile')
   }
-    def branchname = "dev";
     stages {
+        def branchname = "dev";
         stage('Build&Push IMG') {
             steps {
                 script {
