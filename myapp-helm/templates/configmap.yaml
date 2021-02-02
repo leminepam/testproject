@@ -4,4 +4,4 @@ metadata:
   namespace: helm
   name: {{ .Release.Name }}
 data:
-  index.html: "Hello, World from {{ .Values.user }}"
+  index.html: "Hello, World from {{ .Values.user }} to me"
