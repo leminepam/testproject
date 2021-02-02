@@ -33,7 +33,7 @@ spec:
             steps {
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                        def customImage = docker.build("leminepam/dockerhub:${env.BRANCH_NAME}", "java/DemoSpringBootApp/");
+                        def customImage = docker.build("leminepam/dockerhub:${GIT_BRANCH}", "java/DemoSpringBootApp/");
                         customImage.push();
                         }
                  }
@@ -51,7 +51,7 @@ spec:
                 sh 'helm repo add leminrepo-charts https://leminepam.github.io/testproject/'
                 sh 'helm ls'
                 sh 'printenv'
-//                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=${env.BRANCH_NAME} '
+//                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=dev '
                 }
             }
          }
