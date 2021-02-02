@@ -33,7 +33,7 @@ spec:
             steps {
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                        def branchname = "${env.BRANCH_NAME}".minus("origin/");
+                        def branchname = "${GIT_BRANCH}".minus("origin/");
                         def customImage = docker.build("leminepam/dockerhub:${branchname}", "java/DemoSpringBootApp/");
                         customImage.push();
                         }
@@ -42,7 +42,6 @@ spec:
          }
          stage('Deploy IMG to k8s from helm') {
             steps {
-    //            sh 'echo ${env.BRANCH_NAME}'
                 sh 'apk --no-cache add curl'
                 sh 'curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3'
                 sh 'chmod 700 get_helm.sh'
