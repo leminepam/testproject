@@ -52,7 +52,7 @@ spec:
                 sh 'helm repo add leminrepo-charts https://leminepam.github.io/testproject/'
                 sh 'helm ls'
                 sh 'printenv'
-                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=\'$GIT_BRANCH | cut -c 8-\' --set image=leminepam/dockerhub:$GIT_BRANCH | cut -c 8-'
+                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace="$GIT_BRANCH | cut -c 8-" --set image="leminepam/dockerhub:$GIT_BRANCH | cut -c 8-"'
                 }
             }
          }
