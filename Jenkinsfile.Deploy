@@ -48,7 +48,9 @@ spec:
                 sh './get_helm.sh'
                 sh 'cat ${EXAMPLE_KEY} >> /tmp/config'
                 sh 'helm repo add leminrepo-charts https://leminepam.github.io/testproject/'
-                sh 'helm install newapp leminrepo-charts/myapp-helm'
+                sh 'helm ls'
+                sh 'printenv'
+//                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=dev '
                 }
             }
          }
