@@ -41,6 +41,7 @@ spec:
          }
          stage('Deploy IMG to k8s from helm') {
             steps {
+                sh 'echo ${env.BRANCH_NAME}'
                 sh 'apk --no-cache add curl'
                 sh 'curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3'
                 sh 'chmod 700 get_helm.sh'
@@ -50,7 +51,7 @@ spec:
                 sh 'helm repo add leminrepo-charts https://leminepam.github.io/testproject/'
                 sh 'helm ls'
                 sh 'printenv'
-//                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=dev '
+//                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=${env.BRANCH_NAME} '
                 }
             }
          }
