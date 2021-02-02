@@ -24,7 +24,6 @@ spec:
 
            defaultContainer 'dockerdind'
           }
-    def branchname = "origin/dev".minus("origin/");
     }
     environment {
     EXAMPLE_KEY = credentials('kubeconfigfile')
@@ -34,7 +33,7 @@ spec:
             steps {
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-
+                        def branchname = ${env.BRANCH_NAME}.minus("origin/");
                         def customImage = docker.build("leminepam/dockerhub:${branchname}", "java/DemoSpringBootApp/");
                         customImage.push();
                         }
