@@ -24,14 +24,12 @@ spec:
 
            defaultContainer 'dockerdind'
           }
+    def branchname = "origin/dev".minus("origin/");
     }
     environment {
     EXAMPLE_KEY = credentials('kubeconfigfile')
   }
     stages {
-        script{
-        def branchname = "origin/dev".minus("origin/");
-        }
         stage('Build&Push IMG') {
             steps {
                 script {
