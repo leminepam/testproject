@@ -33,7 +33,8 @@ spec:
             steps {
                 script {
                         docker.withRegistry('https://registry.hub.docker.com', 'leminepam') {
-                        def branchname = "dev";
+                        def s = "origin/dev";
+                        def branchname = s.minus(" and versatile");
                         def customImage = docker.build("leminepam/dockerhub:${branchname}", "java/DemoSpringBootApp/");
                         customImage.push();
                         }
