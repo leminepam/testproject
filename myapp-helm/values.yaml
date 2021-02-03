@@ -1,4 +1,0 @@
-user: "Username"
-namespace: "dev"
-name: "myapp-deployment"
-image: "leminepam/dockerhub:dev"
