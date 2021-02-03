@@ -53,7 +53,7 @@ spec:
                     sh("helm repo add leminrepo-charts https://leminepam.github.io/testproject/");
                     sh("helm ls");
                     sh("printenv");
-                    sh("helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=${branchname} --set image="leminepam/dockerhub:${branchname}");
+                    sh("helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=${branchname} --set image=leminepam/dockerhub:${branchname}");
                 }
 
 //                sh 'apk --no-cache add curl'
