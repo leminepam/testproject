@@ -43,7 +43,7 @@ spec:
          stage('Deploy IMG to k8s from helm') {
             steps {
                 script {
-                    def branchname = "${GIT_BRANCH}".minus("origin/");
+         //           def branchname = "${GIT_BRANCH}".minus("origin/");
                     sh("apk --no-cache add curl");
                     sh("curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3");
                     sh("chmod 700 get_helm.sh");
@@ -55,17 +55,6 @@ spec:
                     sh("printenv");
                     sh("helm install myapp-chart leminrepo-charts/myapp-helm --set namespace=${branchname} --set image=leminepam/dockerhub:${branchname}");
                 }
-
-//                sh 'apk --no-cache add curl'
-//                sh 'curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3'
-//                sh 'chmod 700 get_helm.sh'
-//                sh 'sed -i.bak "1 s/^.*$/#!\\/bin\\/sh/" get_helm.sh'
-//                sh './get_helm.sh'
-//                sh 'cat ${EXAMPLE_KEY} >> /tmp/config'
- //               sh 'helm repo add leminrepo-charts https://leminepam.github.io/testproject/'
-//                sh 'helm ls'
-//                sh 'printenv'
-//                sh 'helm install myapp-chart leminrepo-charts/myapp-helm --set namespace="$GIT_BRANCH | cut -c 8-" --set image="leminepam/dockerhub:$GIT_BRANCH | cut -c 8-"'
                 }
             }
          }
