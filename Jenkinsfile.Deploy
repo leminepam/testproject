@@ -47,7 +47,7 @@ spec:
                     sh("apk --no-cache add curl");
                     sh("curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3");
                     sh("chmod 700 get_helm.sh");
-                    sh("sed -i.bak \"1 s/^.*$/#!\\/bin\\/sh/\" get_helm.sh");
+                    sh("sed -i.bak \"1 s/^.*\$/#!\\/bin\\/sh/\" get_helm.sh");
                     sh("./get_helm.sh");
                     sh("cat ${EXAMPLE_KEY} >> /tmp/config");
                     sh("helm repo add leminrepo-charts https://leminepam.github.io/testproject/");
