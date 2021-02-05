@@ -1,0 +1,164 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - fileSystemServiceAccountCredential:
+          id: "bdcaff95-dfae-4afd-a2a3-a6656c829ff5"
+          scope: GLOBAL
+      - basicSSHUserPrivateKey:
+          id: "98b695b4-367c-44a3-96e2-90896e435fe3"
+          privateKeySource:
+            directEntry:
+              privateKey: "{AQAAABAAAAGwka7P1chFqLVb3lCi6rIxg9/jFKC0WtfKkMIAByPOha3GUuPViypqjriYUJVqmtJEBBTwqK25B3xKU6CuoG61ckv/lEQEnaValesL2VqLC3c5SIK3Ox7z9wXgFY3VRiJP7rQpNAidNweVSBxx6+Yd2CnZDCVkv61eXRVxuHOIhr8f42ykkOSjjRblrLnhMLbZtv53+Wddz56QlHgdk+1hULMNCkzdWPD/nzw3vZziCL2qxn/3i609Yh441P9dNQhIDUUQlWx7tYAfE3VMPW+gMMS9P5/zK0nSEAcyNm2KZ7w12ImrurVzJY+w1DXgKmQjwgRTW1dlcWFM6F8tj4buRdoxKEf8JwkdRKxIW0Vwm9zF3o+yGhVmu1EdCHr6LPVSYXpiUjgenh+gkYnSLtOImp03hZPjHtnEdRbPL3MBTQYVA1iDiiu9wiqapvU009R9iEX56OSWzrIGxsbjaDH1B8sPfVeK+LeqoItwZW/9p3eX5rlb+LJ5AcaKWCFzUgBRRArf6BmTRxDJkNBpydrnnypWuRfvzdD6b1ppd+yVYkZeSrORGoYtUbcVB0OKSvK3xG6VJQpqzdGb+l/7gsY4qg==}"
+          scope: GLOBAL
+          username: "leminepamsshgit"
+      - kubeconfig:
+          id: "3079435b-9c55-48c9-bc93-44690128d102"
+          kubeconfigSource:
+            fileOnMaster:
+              kubeconfigFile: "/tmp/config"
+          scope: GLOBAL
+      - usernamePassword:
+          id: "leminepam"
+          password: "{AQAAABAAAAAQfiUTJ33iAWJ5fAvMN9gJOqUegW1AygAlDbXER0Z+nnQ=}"
+          scope: GLOBAL
+          username: "leminepam"
+      - file:
+          fileName: "config2"
+          id: "kubeconfigfile"
+          scope: GLOBAL
+          secretBytes: "{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}"
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  clouds:
+  - kubernetes:
+      containerCap: 10
+      containerCapStr: "10"
+      jenkinsTunnel: "jenkins-1611061541-agent:50000"
+      jenkinsUrl: "http://jenkins-1611061541:8080"
+      name: "kubernetes"
+      namespace: "jenkins-project"
+      podLabels:
+      - key: "jenkins/jenkins-1611061541-jenkins-agent"
+        value: "true"
+      serverUrl: "https://kubernetes.default"
+      templates:
+      - containers:
+        - args: "^${computer.jnlpmac} ^${computer.name}"
+          envVars:
+          - envVar:
+              key: "JENKINS_URL"
+              value: "http://jenkins-1611061541.jenkins-project.svc.cluster.local:8080/"
+          image: "jenkins/inbound-agent:4.6-1"
+          name: "jnlp"
+          resourceLimitCpu: "512m"
+          resourceLimitMemory: "512Mi"
+          resourceRequestCpu: "512m"
+          resourceRequestMemory: "512Mi"
+          workingDir: "/home/jenkins"
+        id: "f50c3307-43ce-417a-a293-bfedda821379"
+        label: "jenkins-1611061541-jenkins-agent "
+        name: "default"
+        nodeUsageMode: "NORMAL"
+        podRetention: "never"
+        serviceAccount: "default"
+        yamlMergeStrategy: "override"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
+  disableRememberMe: false
+  labelAtoms:
+  - name: "master"
+  - name: "masternode"
+  labelString: "masternode"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  numExecutors: 0
+  primaryView:
+    all:
+      description: "LEMIN test"
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        name: "Jenkins Admin"
+        properties:
+        - "apiToken"
+        - "mailer"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+      - id: "lemin"
+        name: "Maksim"
+        properties:
+        - "apiToken"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "leminbox@mail.ru"
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      description: "LEMIN test"
+      name: "all"
+  viewsTabBar: "standard"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  sSHD:
+    port: -1
+unclassified:
+  appInsightsGlobalConfig:
+    appInsightsEnabled: true
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitSCM:
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://jenkins-1611061541:8080/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  pollSCM:
+    pollingThreadCount: 10
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
